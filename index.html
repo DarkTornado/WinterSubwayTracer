@@ -1,0 +1,107 @@
+<html>
+<header>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='user-scalable=no width=device-width' />
+    <title>윈터 랩핑 열차 추적기</title>
+    <meta name="description" content="에스파 윈터 랩핑 열차 실시간 위치" />
+    <meta property="og:title" content="윈터 랩핑 열차 추적기" />
+    <meta property="og:description" content="에스파 윈터 랩핑 열차 실시간 위치" />
+    <meta property="og:image" content="./thumb.jpg">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="윈터 랩핑 열차 추적기">
+    <meta name="twitter:description" content="에스파 윈터 랩핑 열차 실시간 위치">
+</header>
+<style>
+    body {
+        margin: 0px;
+        font-family: NanumGothic;
+    }
+
+    div.header {
+        background: black;
+        padding: 13px;
+        box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        position: fixed;
+        color: #FFFFFF;
+        font-size: 22px;
+    }
+
+    div.body {
+        padding: 80px 20px 20px 20px;
+    }
+
+    div.footer {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    table {
+        width: 100%;
+        color: #000000;
+        border-collapse: collapse;
+        font-size: 16px;
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+    }
+
+    td {
+        padding: 8px;
+        border-collapse: collapse;
+        border: 0px solid #000000;
+        border-top: 1px solid #000000;
+        text-align: center;
+    }
+    td.title {
+        padding: 8px;
+        background: #EEEEEE;
+        font-weight: bold;
+    }
+
+    p {
+        margin: 0px;
+    }
+</style>
+
+<body>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
+    <div class=header>
+        윈터 랩핑 열차 추적기
+    </div>
+    <div class=body>
+        <table id=data>
+            <tr><td class="title">열차 위치 정보</td></tr>
+            <tr><td>위치 정보 불러오는 중...</td></tr>
+        </table>
+
+    </div>
+    <div class=footer>
+        <hr width="98%">
+        <p align=center>© 2024 Dark Tornado, All rights reserved.</p>
+    </div>
+    <script>
+        function load() {
+            fetch('https://api.darktornado.net/winter')
+                .then((response) => response.json())
+                .then((data) => {
+                    drawTable(data);
+                });
+        }
+        load();
+        
+        function drawTable(data) {
+            var src = '<tr><td class="title">열차 위치 정보</td></tr>';
+            if (data.found) {
+                src += '<tr><td>' + data.status + '</td></tr>';
+                src += '<tr><td>' + data.destination + ' ' + data.no + '번 열차</td></tr>';
+            }
+            else {
+                src += '<tr><td>지금은 운행 중이지 않거나, 열차 위치를 찾지 못했어요.</td></tr>';
+            }
+            document.getElementById('data').innerHTML = src;
+        }
+    </script>
+</body>
+
+</html>
