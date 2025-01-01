@@ -130,7 +130,7 @@
             var src = '<tr><td class="title">열차 위치 정보</td></tr>';
             if (data.found) {
                 src += '<tr><td>' + data.station + '역 ' + data.status + '</td></tr>';
-                src += '<tr><td>' + data.destination + ' ' + data.no + '번 열차</td></tr>';
+                src += '<tr><td>' + data.destination + (data.destination.endsWith('선순환') ? ' ' : '행 ') + data.no + '번 열차</td></tr>';
             }
             else {
                 src += '<tr><td>지금은 운행 중이지 않거나, 열차 위치를 찾지 못했어요.</td></tr>';
