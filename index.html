@@ -14,7 +14,7 @@
     <meta name="twitter:description" content="에스파 윈터 랩핑 열차 실시간 위치">
     <meta name="twitter:image" property="twitter:image:src" content="https://darktornado.github.io/WinterSubwayTracer/images/thumb.jpg">
     
-	<link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </header>
 
 <body>
@@ -46,16 +46,24 @@
     </div>
     <div class=footer>
         <hr width="98%">
-        <p align=center>© 2024 Dark Tornado, All rights reserved.</p>
+        <p align=center>© 2024-2025 Dark Tornado, All rights reserved.</p>
     </div>
     <script>
         function load() {
-            fetch('https://api.darktornado.net/winter')
+            /*
+            fetch('이상 작동하지 않는 API')
                 .then((response) => response.json())
                 .then((data) => {
                     drawTable(data);
                     drawMap(data);
                 });
+            */
+            const data = { //2025년 1월 19일을 마지막으로 운행 종료하였기에, 더 이상 작동하지 않음
+                found: false,
+                updated: 0
+            };
+            drawTable(data);
+            drawMap(data);
         }
         load();
         
