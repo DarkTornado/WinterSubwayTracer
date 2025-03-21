@@ -74,7 +74,8 @@
                 src += '<tr><td>' + data.destination + (data.destination.endsWith('선순환') ? ' ' : '행 ') + data.no + '번 열차</td></tr>';
             }
             else {
-                src += '<tr><td>지금은 운행 중이지 않거나, 열차 위치를 찾지 못했어요.</td></tr>';
+                // src += '<tr><td>지금은 운행 중이지 않거나, 열차 위치를 찾지 못했어요.</td></tr>';
+                src += '<tr><td><b><font color=#FF1744>윈터 랩핑 열차는 더 이상 운행하지 않습니다.</font></b></td></tr>';
             }
             document.getElementById('data').innerHTML = src;
         }
